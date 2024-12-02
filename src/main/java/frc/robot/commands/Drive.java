@@ -12,10 +12,9 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.Drivetrain;
 
 public class Drive extends Command {
-
   private Drivetrain m_drivetrain;
   private CommandPS5Controller m_driveController;
-
+  
   /** Creates a new drive. */
   public Drive(Drivetrain drivetrain, CommandPS5Controller controller) {
     m_drivetrain = drivetrain;    

@@ -8,6 +8,7 @@ import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMMotorController;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
@@ -16,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Drivetrain extends SubsystemBase {
 
   private PWMSparkMax leftMotor, rightMotor;
-  private RelativeEncoder leftEncoder, rightEncoder;
+  private Encoder leftEncoder, rightEncoder;
   private DifferentialDrive driveTrain;
 
 
@@ -24,6 +25,12 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
     leftMotor = new PWMSparkMax(0);
     rightMotor = new PWMSparkMax(1); // TODO: Change channel IDs when able to
+
+    //TODO: CORRECT THE DEFINTION (3 PARAMETERS)
+
+    //leftEncoder = new Encoder();
+
+    //rightEncoder = new Encoder();
 
     driveTrain = new DifferentialDrive(leftMotor, rightMotor);
   }
