@@ -17,18 +17,19 @@ import frc.robot.LimelightTable;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.SliceLimelight;
 
-private final Drive m_drivetrain;
 
-private final PIDController rotationController;
-
-private boolean outOfFrame;
-
-private boolean stopped;
 
 public class Auto extends Command {
+
+  private final Drivetrain m_drivetrain;
+
   /** Creates a new Auto. */
-  public Auto() {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public Auto(Drivetrain drivetrain) {
+
+    addRequirements(drivetrain);
+
+    m_drivetrain = drivetrain;
+
   }
 
   // Called when the command is initially scheduled.
@@ -37,11 +38,15 @@ public class Auto extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_drivetrain.drive(0, -3);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_drivetrain.drive(0,0);
+  }
 
   // Returns true when the command should end.
   @Override
