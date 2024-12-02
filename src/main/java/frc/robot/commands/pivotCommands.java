@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 public class pivotCommands extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   public final pivotSubsystem pivotCommand;
-  Joystick joystick = new Joystick(0);
+  private CommandPS5Controller m_operator;
   /**
    * Creates a new ExampleCommand.
    *
@@ -20,6 +20,7 @@ public class pivotCommands extends Command {
    */
   public pivotCommands(pivotSubsystem subsystem) {
     pivotCommand = subsystem;
+    m_operator = new CommandPS5Controller();
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -33,14 +34,15 @@ public class pivotCommands extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      double bothwaysSpeed = joystick.getX();
+      double bothwaysSpeed = m_operator.getRightY();
       pivotCommand.pivot(bothwaysSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
-  // Returns true when the command should end.
+  public void end(boolean interrupted) {
+    pivotCommand.pivot(0);
+  }
   @Override
   public boolean isFinished() {
     return false;
