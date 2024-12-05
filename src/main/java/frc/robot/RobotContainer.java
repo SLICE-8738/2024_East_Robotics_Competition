@@ -8,8 +8,10 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Auto;
 import frc.robot.commands.Drive;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.pivotCommands;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.pivotSubsystem;
 import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
@@ -26,11 +28,14 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private final Drivetrain m_Drivetrain = new Drivetrain();
-
-  private final Drive m_DriveCommand = new Drive(m_Drivetrain, null);
+  private final pivotSubsystem m_PivotSubsystem = new pivotSubsystem();
 
   private final CommandPS5Controller m_DriverController = new CommandPS5Controller(Constants.OperatorConstants.DRIVER_CONTROLLER_PORT);
   private final CommandPS5Controller m_OperatorController = new CommandPS5Controller(Constants.OperatorConstants.OPERATOR_CONTROLLER_PORT);
+
+  private final Drive m_DriveCommand = new Drive(m_Drivetrain, m_DriverController);
+  private final pivotCommands m_PivotCommands =  new pivotCommands(m_PivotSubsystem, m_OperatorController);
+
   private final Auto m_Auto = new Auto(m_Drivetrain);
 
   
@@ -52,6 +57,7 @@ public class RobotContainer {
   private void configureBindings() {
     
     m_Drivetrain.setDefaultCommand(m_DriveCommand);
+    m_PivotSubsystem.setDefaultCommand(m_PivotCommands);
 
   }
 

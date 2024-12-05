@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class pivotSubsystem extends SubsystemBase{
     // temporary device ID and motortype
-    public final PWMSparkMax pivotMotor = new PWMSparkMax(6);
+    public final PWMSparkMax pivotMotor = new PWMSparkMax(1);
 
     public pivotSubsystem() {
     }

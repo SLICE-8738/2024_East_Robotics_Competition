@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 public class pivotCommands extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   public final pivotSubsystem pivotCommand;
-  private CommandPS5Controller m_operator;
+  private CommandPS5Controller m_operatorController;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public pivotCommands(pivotSubsystem subsystem) {
+  public pivotCommands(pivotSubsystem subsystem, CommandPS5Controller controller) {
     pivotCommand = subsystem;
-    m_operator = new CommandPS5Controller();
+    m_operatorController = controller;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -28,13 +28,12 @@ public class pivotCommands extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("Trying to start pivot arm...");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      double bothwaysSpeed = m_operator.getRightY();
+      double bothwaysSpeed = m_operatorController.getRightY();
       pivotCommand.pivot(bothwaysSpeed);
   }
 
