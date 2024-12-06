@@ -34,12 +34,15 @@ public class Auto extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_drivetrain.drive(0, 0);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.drive(0.25, 0);
+    m_drivetrain.drive(-0.75, 0);
+    System.out.println("Code is trying to work");
     
   }
 

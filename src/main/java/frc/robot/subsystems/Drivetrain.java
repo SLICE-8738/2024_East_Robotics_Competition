@@ -30,9 +30,11 @@ public class Drivetrain extends SubsystemBase {
     leftMotor = new PWMSparkMax(8);
     rightMotor = new PWMSparkMax(9); // TODO: Change channel IDs when able to
 
+    leftMotor.setInverted(true);
+
     //TODO: CORRECT THE DEFINTION (3 PARAMETERS)
 
-    //leftEncoder = new Encoder();
+    //leftEncoder = new Encoder();-
 
     //rightEncoder = new Encoder();
 
