@@ -8,6 +8,7 @@ public class pivotSubsystem extends SubsystemBase{
     public final PWMSparkMax pivotMotor = new PWMSparkMax(1);
 
     public pivotSubsystem() {
+        pivotMotor.setInverted(true);
     }
 
     public void pivot(double speed) {

@@ -22,14 +22,15 @@ import frc.robot.subsystems.SliceLimelight;
 public class Auto extends Command {
 
   private final Drivetrain m_drivetrain;
-  private Timer timer;
+  private final Timer timer;
 
   /** Creates a new Auto. */
-  public Auto(Drivetrain drivetrain) {
+  public Auto(Drivetrain drivetrain, Timer m_timer) {
 
     addRequirements(drivetrain);
 
     m_drivetrain = drivetrain;
+    timer = m_timer;
 
   }
 
@@ -44,21 +45,22 @@ public class Auto extends Command {
   public void execute() {
     timer.start();
     m_drivetrain.drive(-0.75, 0);
-    System.out.println("Code is trying to work");
     
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    if (timer.get() > 1) {
-      m_drivetrain.drive(0,0);
-    }
+    m_drivetrain.drive(0,0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (timer.get() > 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

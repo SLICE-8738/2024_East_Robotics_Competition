@@ -16,6 +16,9 @@ import frc.robot.commands.pivotExpandCommand;
 import frc.robot.commands.rollerCommand;
 import frc.robot.subsystems.pivotSubsystem;
 import frc.robot.subsystems.rollers;
+
+import java.util.Timer;
+
 import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
@@ -33,14 +36,14 @@ public class RobotContainer {
 
   private final Drivetrain m_Drivetrain = new Drivetrain();
   private final pivotSubsystem m_PivotSubsystem = new pivotSubsystem();
-
+  private final Timer m_Timer = new Timer();
   private final CommandPS5Controller m_DriverController = new CommandPS5Controller(Constants.OperatorConstants.DRIVER_CONTROLLER_PORT);
   private final CommandPS5Controller m_OperatorController = new CommandPS5Controller(Constants.OperatorConstants.OPERATOR_CONTROLLER_PORT);
 
   private final Drive m_DriveCommand = new Drive(m_Drivetrain, m_DriverController);
   private final pivotCommands m_PivotCommands =  new pivotCommands(m_PivotSubsystem, m_OperatorController);
 
-  private final Auto m_Auto = new Auto(m_Drivetrain);
+  private final Auto m_Auto = new Auto(m_Drivetrain, m_Timer);
 
   private final pivotExpandSub m_expansion = new pivotExpandSub();
   private final pivotExpandCommand m_expansionCommand = new pivotExpandCommand(m_expansion, m_OperatorController);

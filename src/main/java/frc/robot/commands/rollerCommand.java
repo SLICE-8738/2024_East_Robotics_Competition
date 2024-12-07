@@ -28,18 +28,24 @@ public class rollerCommand extends Command {
   @Override
   public void execute() { 
     // might not work
-    /* if (m_rollerOperator.L1().getAsBoolean()) {
-      rollersub.roll(1);
+    if (m_rollerOperator.L1().getAsBoolean()) {
+      rollersub.roll(0.6);
     }
     else if (m_rollerOperator.R1().getAsBoolean()) {
-      rollersub.roll(-1);
+      rollersub.roll(-0.6);
+    }
+    else if (m_rollerOperator.L1().getAsBoolean() != true) {
+      rollersub.roll(0);
+    }
+    else if (m_rollerOperator.R1().getAsBoolean() != true) {
+      rollersub.roll(0);
     }
     else {
       rollersub.roll(0);
     }
     }
-   */
-    // hold to keep it turned on
+/* 
+    // hold to keep it turn
     while (m_rollerOperator.L1().getAsBoolean()) {
       rollersub.roll(1);
     }
@@ -48,16 +54,33 @@ public class rollerCommand extends Command {
     }
     rollersub.roll(0);
   }
-
+*/
 
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    rollersub.roll(0);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (m_rollerOperator.L1().getAsBoolean()) {
+      return false;
+    }
+    else if (m_rollerOperator.R1().getAsBoolean()) {
+      return false;
+    }
+    else if (m_rollerOperator.L1().getAsBoolean() != true) {
+      return true;
+    }
+    else if (m_rollerOperator.R1().getAsBoolean() != true) {
+      return true;
+    }
+    else {
+      return true;
+    }
+
   }
 }

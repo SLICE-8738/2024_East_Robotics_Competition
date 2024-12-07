@@ -17,7 +17,7 @@ public class pivotExpandSub extends SubsystemBase {
   }
 
   public void expandPivot(double speed) {
-    pivotExpand.set(speed/2);
+    pivotExpand.set(speed);
   }
   @Override
   public void periodic() {
