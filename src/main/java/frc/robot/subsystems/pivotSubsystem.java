@@ -11,11 +11,11 @@ public class pivotSubsystem extends SubsystemBase{
     }
 
     public void pivot(double speed) {
-        pivotMotor.set(speed);
+        pivotMotor.set(speed/2);
     }
     @Override
     public void periodic() {
 
     }
-    
+     
 }

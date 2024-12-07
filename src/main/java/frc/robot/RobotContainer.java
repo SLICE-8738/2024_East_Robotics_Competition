@@ -11,7 +11,11 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.pivotCommands;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.pivotExpandSub;
+import frc.robot.commands.pivotExpandCommand;
+import frc.robot.commands.rollerCommand;
 import frc.robot.subsystems.pivotSubsystem;
+import frc.robot.subsystems.rollers;
 import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
@@ -38,6 +42,11 @@ public class RobotContainer {
 
   private final Auto m_Auto = new Auto(m_Drivetrain);
 
+  private final pivotExpandSub m_expansion = new pivotExpandSub();
+  private final pivotExpandCommand m_expansionCommand = new pivotExpandCommand(m_expansion, m_OperatorController);
+  
+  private final rollers roller = new rollers();
+  private final rollerCommand  rollCommand = new rollerCommand(roller, m_OperatorController);
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -58,6 +67,9 @@ public class RobotContainer {
     
     m_Drivetrain.setDefaultCommand(m_DriveCommand);
     m_PivotSubsystem.setDefaultCommand(m_PivotCommands);
+    m_expansion.setDefaultCommand(m_expansionCommand);
+    roller.setDefaultCommand(rollCommand);
+
 
   }
 
