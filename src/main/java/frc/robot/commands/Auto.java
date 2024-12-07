@@ -41,13 +41,14 @@ public class Auto extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_auto_timer.reset();
+    m_auto_timer.start();
     m_drivetrain.drive(0, 0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() { 
-    m_auto_timer.start();
     m_drivetrain.drive(-0.65, 0);
     }
 

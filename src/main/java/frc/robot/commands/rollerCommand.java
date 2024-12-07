@@ -12,6 +12,8 @@ public class rollerCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   public final rollers rollersub;
   private CommandPS5Controller m_rollerOperator;
+  int a = 0;
+  int b = 0;
   /** Creates a new rollerCommand. */
   public rollerCommand(rollers roll, CommandPS5Controller rollJoystick) {
     rollersub = roll;
@@ -22,7 +24,10 @@ public class rollerCommand extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    //a=0;
+    //b=0;
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -34,16 +39,10 @@ public class rollerCommand extends Command {
     else if (m_rollerOperator.R1().getAsBoolean()) {
       rollersub.roll(-0.6);
     }
-    else if (m_rollerOperator.L1().getAsBoolean() != true) {
-      rollersub.roll(0);
-    }
-    else if (m_rollerOperator.R1().getAsBoolean() != true) {
-      rollersub.roll(0);
-    }
     else {
       rollersub.roll(0);
     }
-    }
+  }
 /* 
     // hold to keep it turn
     while (m_rollerOperator.L1().getAsBoolean()) {
@@ -66,21 +65,6 @@ public class rollerCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_rollerOperator.L1().getAsBoolean()) {
-      return false;
-    }
-    else if (m_rollerOperator.R1().getAsBoolean()) {
-      return false;
-    }
-    else if (m_rollerOperator.L1().getAsBoolean() != true) {
-      return true;
-    }
-    else if (m_rollerOperator.R1().getAsBoolean() != true) {
-      return true;
-    }
-    else {
-      return true;
-    }
-
+    return false;
   }
 }
