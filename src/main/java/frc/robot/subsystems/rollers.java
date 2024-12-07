@@ -15,7 +15,7 @@ public class rollers extends SubsystemBase {
 
   }
   public void roll(double speed) {
-    rollerMotor.set(speed);
+    rollerMotor.set(speed/2);
   }
   @Override
   public void periodic() {

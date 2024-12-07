@@ -25,18 +25,15 @@ public class Auto extends Command {
 
   private final Drivetrain m_drivetrain;
   private final Timer m_auto_timer;
-  private final Timer m_pivot_timer;
-  private final pivotSubsystem m_pivot;
 
   /** Creates a new Auto. */
-  public Auto(Drivetrain drivetrain, Timer auto_timer, Timer pivot_timer, pivotSubsystem pivot) {
+  public Auto(Drivetrain drivetrain, Timer auto_timer) {
 
     addRequirements(drivetrain);
 
     m_drivetrain = drivetrain;
     m_auto_timer = auto_timer;
-    m_pivot_timer = pivot_timer;
-    m_pivot = pivot;
+
 
 
   }
@@ -49,22 +46,17 @@ public class Auto extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
+  public void execute() { 
     m_auto_timer.start();
-    m_drivetrain.drive(-0.75, 0);
+    m_drivetrain.drive(-0.65, 0);
+    }
 
     
-  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_drivetrain.drive(0,0);
-    m_pivot.pivot(0.7);
-    if (m_pivot_timer.get() > 1) {
-      m_pivot.pivot(0);
-      m_pivot_timer.stop();
-    }
   } 
 
   // Returns true when the command should end.
@@ -72,10 +64,10 @@ public class Auto extends Command {
   public boolean isFinished() {
     if (m_auto_timer.get() > 1) {
       m_auto_timer.stop();
-      m_pivot_timer.start();
       return true;
     } else {
       return false;
     }
   }
+
 }
