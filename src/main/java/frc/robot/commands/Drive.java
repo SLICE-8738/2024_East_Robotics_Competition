@@ -54,7 +54,7 @@ public class Drive extends Command {
     //double[] rotationCalculations = rotationFilter.filter(0, m_driveController.getRightX());
 
     //m_drivetrain.drive(translationCalculations[1], rotationCalculations[0]);
-    m_drivetrain.drive(m_driveController.getLeftY() / 1.99, m_driveController.getRightX() / 1.99);
+    m_drivetrain.drive(m_driveController.getLeftY() / 1.6, m_driveController.getRightX() / 1.6);
   }
 
   // Called once the command ends or is interrupted.

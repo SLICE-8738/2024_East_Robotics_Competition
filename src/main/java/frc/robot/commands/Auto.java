@@ -62,7 +62,7 @@ public class Auto extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (m_auto_timer.get() > 1) {
+    if (m_auto_timer.get() > .5) {
       m_auto_timer.stop();
       return true;
     } else {
