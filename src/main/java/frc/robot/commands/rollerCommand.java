@@ -26,8 +26,9 @@ public class rollerCommand extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    if (m_rollerOperator.L1().getAsBoolean()) {
+  public void execute() { 
+    // might not work
+    /* if (m_rollerOperator.L1().getAsBoolean()) {
       rollersub.roll(1);
     }
     else if (m_rollerOperator.R1().getAsBoolean()) {
@@ -37,6 +38,17 @@ public class rollerCommand extends Command {
       rollersub.roll(0);
     }
     }
+   */
+    // hold to keep it turned on
+    while (m_rollerOperator.L1().getAsBoolean()) {
+      rollersub.roll(1);
+    }
+    while (m_rollerOperator.R1().getAsBoolean()) {
+      rollersub.roll(-1);
+    }
+    rollersub.roll(0);
+  }
+
 
 
   // Called once the command ends or is interrupted.

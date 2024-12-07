@@ -27,8 +27,8 @@ public class Drivetrain extends SubsystemBase {
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
-    leftMotor = new PWMSparkMax(8);
-    rightMotor = new PWMSparkMax(9); // TODO: Change channel IDs when able to
+    leftMotor = new PWMSparkMax(7);
+    rightMotor = new PWMSparkMax(8); // TODO: Change channel IDs when able to
 
     leftMotor.setInverted(true);
 

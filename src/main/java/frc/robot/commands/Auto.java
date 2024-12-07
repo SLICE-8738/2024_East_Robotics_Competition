@@ -22,6 +22,7 @@ import frc.robot.subsystems.SliceLimelight;
 public class Auto extends Command {
 
   private final Drivetrain m_drivetrain;
+  private Timer timer;
 
   /** Creates a new Auto. */
   public Auto(Drivetrain drivetrain) {
@@ -41,6 +42,7 @@ public class Auto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    timer.start();
     m_drivetrain.drive(-0.75, 0);
     System.out.println("Code is trying to work");
     
@@ -49,7 +51,9 @@ public class Auto extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drivetrain.drive(0,0);
+    if (timer.get() > 1) {
+      m_drivetrain.drive(0,0);
+    }
   }
 
   // Returns true when the command should end.

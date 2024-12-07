@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class rollers extends SubsystemBase {
   /** Creates a new rollers. */
-  public final PWMSparkMax rollerMotor = new PWMSparkMax(3);
+  public final PWMSparkMax rollerMotor = new PWMSparkMax(6);
   
   public rollers() {
 

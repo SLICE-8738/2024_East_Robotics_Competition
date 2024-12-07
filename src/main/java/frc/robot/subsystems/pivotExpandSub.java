@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class pivotExpandSub extends SubsystemBase {
   /** Creates a new pivotExpandSub. */
   // CHANGE THE CHANNEL
-  public final PWMSparkMax pivotExpand = new PWMSparkMax(0);
+  public final PWMSparkMax pivotExpand = new PWMSparkMax(9);
   
   public pivotExpandSub() {
 
